@@ -30,8 +30,8 @@ function App() {
             <Route path="/schools/:id" element={<UniversityDetail />} />
             <Route path="/how-it-works" element={<HowItWorks />} />
             
-            {/* Student Routes */}
-            <Route path="/student/dashboard" element={<StudentDashboard />} />
+            {/* Student Routes - Nested routes */}
+            <Route path="/student/dashboard/*" element={<StudentDashboard />} />
             
             {/* School Routes */}
             <Route path="/school/terms" element={<TermsAndConditions />} />
