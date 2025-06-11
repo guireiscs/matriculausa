@@ -36,7 +36,7 @@ function App() {
             {/* School Routes */}
             <Route path="/school/terms" element={<TermsAndConditions />} />
             <Route path="/school/setup-profile" element={<SchoolProfileSetup />} />
-            <Route path="/school/dashboard" element={<SchoolDashboard />} />
+            <Route path="/school/dashboard/*" element={<SchoolDashboard />} />
             
             {/* Admin Routes */}
             <Route path="/admin/dashboard" element={<AdminDashboard />} />
