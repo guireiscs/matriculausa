@@ -38,7 +38,7 @@ function App() {
             <Route path="/school/setup-profile" element={<SchoolProfileSetup />} />
             <Route path="/school/dashboard/*" element={<SchoolDashboard />} />
             
-            {/* Admin Routes - Rotas aninhadas */}
+            {/* Admin Routes - Nested routes */}
             <Route path="/admin/dashboard/*" element={<AdminDashboard />} />
             
             {/* Placeholder routes for other pages */}
