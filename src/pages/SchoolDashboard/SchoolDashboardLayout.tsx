@@ -86,20 +86,16 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
         <div className="flex flex-col h-full">
           {/* Logo */}
           <div className="flex items-center justify-between h-20 px-6 border-b border-slate-200">
-            <Link to="/" className="flex items-center space-x-3">
+            <Link to="/" className="flex items-center justify-center w-full">
               <img 
                 src="/logo.png.png" 
                 alt="Matrícula USA" 
-                className="h-10 w-auto"
+                className="h-12 w-auto"
               />
-              <div>
-                <h1 className="text-lg font-black text-slate-900">Matrícula USA</h1>
-                <p className="text-xs text-slate-500 font-medium">University Dashboard</p>
-              </div>
             </Link>
             <button
               onClick={() => setSidebarOpen(false)}
-              className="lg:hidden p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100"
+              className="lg:hidden absolute right-4 p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100"
             >
               <X className="h-5 w-5" />
             </button>
