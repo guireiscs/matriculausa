@@ -324,8 +324,8 @@ const AdminDashboard: React.FC = () => {
   };
 
   return (
-    <Routes>
-      <Route path="/" element={<AdminDashboardLayout user={user} loading={loading} />}>
+    <AdminDashboardLayout user={user} loading={loading}>
+      <Routes>
         <Route 
           index 
           element={
@@ -372,8 +372,8 @@ const AdminDashboard: React.FC = () => {
           path="settings" 
           element={<SystemSettings />} 
         />
-      </Route>
-    </Routes>
+      </Routes>
+    </AdminDashboardLayout>
   );
 };
 

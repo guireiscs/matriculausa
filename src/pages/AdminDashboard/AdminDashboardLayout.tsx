@@ -24,11 +24,13 @@ import { useAuth } from '../../hooks/useAuth';
 interface AdminDashboardLayoutProps {
   user: any;
   loading: boolean;
+  children: React.ReactNode;
 }
 
 const AdminDashboardLayout: React.FC<AdminDashboardLayoutProps> = ({
   user,
-  loading
+  loading,
+  children
 }) => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -292,7 +294,7 @@ const AdminDashboardLayout: React.FC<AdminDashboardLayoutProps> = ({
 
         {/* Main Content Area */}
         <main className="flex-1 p-6">
-          <Outlet />
+          {children}
         </main>
       </div>
     </div>
