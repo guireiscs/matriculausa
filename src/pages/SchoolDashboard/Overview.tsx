@@ -33,7 +33,7 @@ interface OverviewProps {
 
 const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, user }) => {
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('pt-BR', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 0
@@ -42,24 +42,24 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
 
   const quickActions = [
     {
-      title: 'Nova Bolsa de Estudo',
-      description: 'Crie uma nova oportunidade de bolsa',
+      title: 'New Scholarship',
+      description: 'Create a new scholarship opportunity',
       icon: Award,
       color: 'bg-gradient-to-r from-[#D0151C] to-red-600',
       link: '/school/scholarship/new',
       enabled: university?.profile_completed
     },
     {
-      title: 'Editar Perfil',
-      description: 'Atualize informações da universidade',
+      title: 'Edit Profile',
+      description: 'Update university information',
       icon: Edit,
       color: 'bg-gradient-to-r from-blue-500 to-blue-600',
       link: '/school/dashboard/profile',
       enabled: true
     },
     {
-      title: 'Ver Candidatos',
-      description: 'Acompanhe aplicações de estudantes',
+      title: 'View Applicants',
+      description: 'Track student applications',
       icon: Users,
       color: 'bg-gradient-to-r from-green-500 to-green-600',
       link: '/school/dashboard/students',
@@ -74,11 +74,11 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 group">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-slate-500 mb-1">Total de Bolsas</p>
+              <p className="text-sm font-medium text-slate-500 mb-1">Total Scholarships</p>
               <p className="text-3xl font-bold text-slate-900">{stats.totalScholarships}</p>
               <div className="flex items-center mt-2">
                 <TrendingUp className="h-4 w-4 text-green-500 mr-1" />
-                <span className="text-sm font-medium text-green-600">+12% este mês</span>
+                <span className="text-sm font-medium text-green-600">+12% this month</span>
               </div>
             </div>
             <div className="w-14 h-14 bg-gradient-to-br from-[#05294E] to-blue-700 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -90,11 +90,11 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 group">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-slate-500 mb-1">Bolsas Ativas</p>
+              <p className="text-sm font-medium text-slate-500 mb-1">Active Scholarships</p>
               <p className="text-3xl font-bold text-slate-900">{stats.activeScholarships}</p>
               <div className="flex items-center mt-2">
                 <CheckCircle className="h-4 w-4 text-green-500 mr-1" />
-                <span className="text-sm font-medium text-green-600">Disponíveis</span>
+                <span className="text-sm font-medium text-green-600">Available</span>
               </div>
             </div>
             <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -106,11 +106,11 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 group">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-slate-500 mb-1">Financiamento Total</p>
+              <p className="text-sm font-medium text-slate-500 mb-1">Total Funding</p>
               <p className="text-3xl font-bold text-slate-900">{formatCurrency(stats.totalFunding)}</p>
               <div className="flex items-center mt-2">
                 <DollarSign className="h-4 w-4 text-blue-500 mr-1" />
-                <span className="text-sm font-medium text-blue-600">Valor oferecido</span>
+                <span className="text-sm font-medium text-blue-600">Amount offered</span>
               </div>
             </div>
             <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -122,11 +122,11 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
         <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg transition-all duration-300 group">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-slate-500 mb-1">Valor Médio</p>
+              <p className="text-sm font-medium text-slate-500 mb-1">Average Amount</p>
               <p className="text-3xl font-bold text-slate-900">{formatCurrency(stats.avgAmount)}</p>
               <div className="flex items-center mt-2">
                 <Target className="h-4 w-4 text-purple-500 mr-1" />
-                <span className="text-sm font-medium text-purple-600">Por bolsa</span>
+                <span className="text-sm font-medium text-purple-600">Per scholarship</span>
               </div>
             </div>
             <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
@@ -156,7 +156,7 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
                 {action.enabled ? (
                   <ArrowUpRight className="h-5 w-5 text-slate-400 group-hover:text-slate-600 transition-colors" />
                 ) : (
-                  <span className="text-xs bg-slate-100 text-slate-500 px-2 py-1 rounded-full font-medium">Em Breve</span>
+                  <span className="text-xs bg-slate-100 text-slate-500 px-2 py-1 rounded-full font-medium">Coming Soon</span>
                 )}
               </div>
               <h3 className="font-bold text-slate-900 mb-2">{action.title}</h3>
@@ -173,8 +173,8 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
             <div className="p-6 border-b border-slate-200">
               <div className="flex items-center justify-between">
                 <div>
-                  <h3 className="text-xl font-bold text-slate-900">Bolsas Recentes</h3>
-                  <p className="text-slate-500 text-sm">Gerencie suas oportunidades de bolsa</p>
+                  <h3 className="text-xl font-bold text-slate-900">Recent Scholarships</h3>
+                  <p className="text-slate-500 text-sm">Manage your scholarship opportunities</p>
                 </div>
                 {university?.profile_completed && (
                   <Link
@@ -182,7 +182,7 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
                     className="bg-gradient-to-r from-[#05294E] to-blue-700 text-white px-4 py-2 rounded-xl hover:from-[#05294E]/90 hover:to-blue-600 transition-all duration-300 font-medium text-sm flex items-center shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <PlusCircle className="h-4 w-4 mr-2" />
-                    Nova Bolsa
+                    New Scholarship
                   </Link>
                 )}
               </div>
@@ -194,13 +194,13 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
                   <div className="w-20 h-20 bg-slate-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <Settings className="h-10 w-10 text-slate-400" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Complete primeiro seu perfil</h3>
-                  <p className="text-slate-500 mb-6">Configure o perfil da universidade para começar a criar bolsas</p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">Complete your profile first</h3>
+                  <p className="text-slate-500 mb-6">Set up your university profile to start creating scholarships</p>
                   <Link
                     to="/school/setup-profile"
                     className="bg-gradient-to-r from-[#05294E] to-blue-700 text-white px-6 py-3 rounded-xl hover:from-[#05294E]/90 hover:to-blue-600 transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
-                    Completar Perfil
+                    Complete Profile
                   </Link>
                 </div>
               ) : scholarships.length === 0 ? (
@@ -208,13 +208,13 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
                   <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6">
                     <Award className="h-10 w-10 text-orange-600" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-3">Ainda não há bolsas</h3>
-                  <p className="text-slate-500 mb-6">Comece criando sua primeira oportunidade de bolsa</p>
+                  <h3 className="text-xl font-bold text-slate-900 mb-3">No scholarships yet</h3>
+                  <p className="text-slate-500 mb-6">Start by creating your first scholarship opportunity</p>
                   <Link
                     to="/school/scholarship/new"
                     className="bg-gradient-to-r from-[#D0151C] to-red-600 text-white px-6 py-3 rounded-xl hover:from-[#B01218] hover:to-red-700 transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
-                    Criar Primeira Bolsa
+                    Create First Scholarship
                   </Link>
                 </div>
               ) : (
@@ -240,7 +240,7 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
                             </div>
                             <div className="flex items-center">
                               <Calendar className="h-4 w-4 mr-1" />
-                              {new Date(scholarship.deadline).toLocaleDateString('pt-BR')}
+                              {new Date(scholarship.deadline).toLocaleDateString()}
                             </div>
                             <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${
                               scholarship.is_active 
@@ -250,12 +250,12 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
                               {scholarship.is_active ? (
                                 <>
                                   <Zap className="h-3 w-3 mr-1" />
-                                  Ativa
+                                  Active
                                 </>
                               ) : (
                                 <>
                                   <Clock className="h-3 w-3 mr-1" />
-                                  Inativa
+                                  Inactive
                                 </>
                               )}
                             </span>
@@ -279,7 +279,7 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
                         to="/school/dashboard/scholarships"
                         className="block text-center text-[#05294E] hover:text-[#05294E]/80 font-medium py-3 hover:bg-slate-50 rounded-xl transition-all duration-300"
                       >
-                        Ver todas as bolsas ({scholarships.length})
+                        View all scholarships ({scholarships.length})
                       </Link>
                     </div>
                   )}
@@ -293,16 +293,16 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
         <div className="space-y-6">
           {/* Profile Status */}
           <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6">
-            <h3 className="text-lg font-bold text-slate-900 mb-4">Status do Perfil</h3>
+            <h3 className="text-lg font-bold text-slate-900 mb-4">Profile Status</h3>
             
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-slate-700">Informações básicas</span>
+                <span className="text-sm font-medium text-slate-700">Basic information</span>
                 <CheckCircle className="h-5 w-5 text-green-500" />
               </div>
               
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-slate-700">Perfil completo</span>
+                <span className="text-sm font-medium text-slate-700">Profile complete</span>
                 {university?.profile_completed ? (
                   <CheckCircle className="h-5 w-5 text-green-500" />
                 ) : (
@@ -311,7 +311,7 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
               </div>
               
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-slate-700">Aprovação da equipe</span>
+                <span className="text-sm font-medium text-slate-700">Team approval</span>
                 {university?.is_approved ? (
                   <CheckCircle className="h-5 w-5 text-green-500" />
                 ) : (
@@ -324,8 +324,8 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
               <div className="mt-6 p-4 bg-gradient-to-r from-orange-50 to-orange-100 rounded-xl border border-orange-200">
                 <p className="text-sm font-medium text-orange-800 mb-2">
                   {!university?.profile_completed 
-                    ? 'Complete seu perfil para liberar todas as funcionalidades'
-                    : 'Seu perfil está sendo analisado pela nossa equipe'
+                    ? 'Complete your profile to unlock all features'
+                    : 'Your profile is being reviewed by our team'
                   }
                 </p>
                 {!university?.profile_completed && (
@@ -333,7 +333,7 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
                     to="/school/setup-profile"
                     className="text-sm font-bold text-orange-700 hover:text-orange-800 transition-colors"
                   >
-                    Completar agora →
+                    Complete now →
                   </Link>
                 )}
               </div>
@@ -342,24 +342,24 @@ const Overview: React.FC<OverviewProps> = ({ university, scholarships, stats, us
 
           {/* Tips */}
           <div className="bg-gradient-to-br from-[#05294E] to-blue-700 rounded-2xl shadow-lg text-white p-6">
-            <h3 className="text-lg font-bold mb-4">💡 Dicas para o Sucesso</h3>
+            <h3 className="text-lg font-bold mb-4">💡 Success Tips</h3>
             <div className="space-y-3">
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-sm text-blue-100">
-                  Bolsas com valores atrativos recebem 3x mais candidaturas
+                  Scholarships with attractive amounts receive 3x more applications
                 </p>
               </div>
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-sm text-blue-100">
-                  Descrições detalhadas aumentam a qualidade dos candidatos
+                  Detailed descriptions increase the quality of candidates
                 </p>
               </div>
               <div className="flex items-start space-x-3">
                 <div className="w-2 h-2 bg-white rounded-full mt-2 flex-shrink-0"></div>
                 <p className="text-sm text-blue-100">
-                  Responda rapidamente às candidaturas para manter o engajamento
+                  Respond quickly to applications to maintain engagement
                 </p>
               </div>
             </div>

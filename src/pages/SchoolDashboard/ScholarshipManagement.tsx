@@ -47,7 +47,7 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
   });
 
   const formatCurrency = (value: number) => {
-    return new Intl.NumberFormat('pt-BR', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
       currency: 'USD',
       minimumFractionDigits: 0
@@ -76,15 +76,15 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
         <div className="w-20 h-20 bg-gradient-to-br from-orange-100 to-orange-200 rounded-2xl flex items-center justify-center mx-auto mb-6">
           <Settings className="h-10 w-10 text-orange-600" />
         </div>
-        <h3 className="text-2xl font-bold text-slate-900 mb-4">Configuração de perfil necessária</h3>
+        <h3 className="text-2xl font-bold text-slate-900 mb-4">Profile setup required</h3>
         <p className="text-slate-500 mb-8 max-w-md mx-auto">
-          Complete o perfil da universidade para começar a criar e gerenciar bolsas de estudo
+          Complete your university profile to start creating and managing scholarships
         </p>
         <Link
           to="/school/setup-profile"
           className="bg-gradient-to-r from-[#05294E] to-blue-700 text-white px-8 py-4 rounded-xl hover:from-[#05294E]/90 hover:to-blue-600 transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
         >
-          Completar Perfil da Universidade
+          Complete University Profile
         </Link>
       </div>
     );
@@ -95,11 +95,11 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
       {/* Header with Actions */}
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
         <div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-2">Gerenciar Bolsas de Estudo</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-2">Manage Scholarships</h2>
           <p className="text-slate-600">
             {scholarships.length > 0 
-              ? `${scholarships.length} bolsa${scholarships.length > 1 ? 's' : ''} criada${scholarships.length > 1 ? 's' : ''}, ${scholarships.filter(s => s.is_active).length} ativa${scholarships.filter(s => s.is_active).length !== 1 ? 's' : ''}`
-              : 'Nenhuma bolsa criada ainda'
+              ? `${scholarships.length} scholarship${scholarships.length > 1 ? 's' : ''} created, ${scholarships.filter(s => s.is_active).length} active`
+              : 'No scholarships created yet'
             }
           </p>
         </div>
@@ -109,7 +109,7 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
           className="bg-gradient-to-r from-[#D0151C] to-red-600 text-white px-6 py-3 rounded-xl hover:from-[#B01218] hover:to-red-700 transition-all duration-300 font-bold flex items-center shadow-lg hover:shadow-xl transform hover:scale-105"
         >
           <Plus className="h-5 w-5 mr-2" />
-          Nova Bolsa de Estudo
+          New Scholarship
         </Link>
       </div>
 
@@ -118,26 +118,26 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
           <div className="w-24 h-24 bg-gradient-to-br from-blue-100 to-blue-200 rounded-3xl flex items-center justify-center mx-auto mb-8">
             <Award className="h-12 w-12 text-blue-600" />
           </div>
-          <h3 className="text-2xl font-bold text-slate-900 mb-4">Ainda não há bolsas criadas</h3>
+          <h3 className="text-2xl font-bold text-slate-900 mb-4">No scholarships created yet</h3>
           <p className="text-slate-500 mb-8 max-w-lg mx-auto">
-            Comece a atrair estudantes internacionais criando oportunidades de bolsa exclusivas e atrativas
+            Start attracting international students by creating exclusive and attractive scholarship opportunities
           </p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 max-w-4xl mx-auto">
             <div className="p-6 bg-slate-50 rounded-2xl">
               <Target className="h-8 w-8 text-[#05294E] mx-auto mb-3" />
-              <h4 className="font-bold text-slate-900 mb-2">Defina Critérios</h4>
-              <p className="text-sm text-slate-600">Estabeleça requisitos claros para candidatos ideais</p>
+              <h4 className="font-bold text-slate-900 mb-2">Define Criteria</h4>
+              <p className="text-sm text-slate-600">Establish clear requirements for ideal candidates</p>
             </div>
             <div className="p-6 bg-slate-50 rounded-2xl">
               <DollarSign className="h-8 w-8 text-green-600 mx-auto mb-3" />
-              <h4 className="font-bold text-slate-900 mb-2">Valor Atrativo</h4>
-              <p className="text-sm text-slate-600">Ofereça valores competitivos para atrair talentos</p>
+              <h4 className="font-bold text-slate-900 mb-2">Attractive Amount</h4>
+              <p className="text-sm text-slate-600">Offer competitive amounts to attract talent</p>
             </div>
             <div className="p-6 bg-slate-50 rounded-2xl">
               <Users className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-              <h4 className="font-bold text-slate-900 mb-2">Alcance Global</h4>
-              <p className="text-sm text-slate-600">Conecte-se com estudantes do mundo todo</p>
+              <h4 className="font-bold text-slate-900 mb-2">Global Reach</h4>
+              <p className="text-sm text-slate-600">Connect with students from around the world</p>
             </div>
           </div>
           
@@ -145,7 +145,7 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
             to="/school/scholarship/new"
             className="bg-gradient-to-r from-[#D0151C] to-red-600 text-white px-8 py-4 rounded-xl hover:from-[#B01218] hover:to-red-700 transition-all duration-300 font-bold shadow-lg hover:shadow-xl transform hover:scale-105"
           >
-            Criar Primeira Bolsa de Estudo
+            Create First Scholarship
           </Link>
         </div>
       ) : (
@@ -158,7 +158,7 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                   <Search className="absolute left-4 top-3.5 h-5 w-5 text-slate-400" />
                   <input
                     type="text"
-                    placeholder="Buscar bolsas..."
+                    placeholder="Search scholarships..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                     className="w-full pl-12 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#05294E] focus:border-[#05294E] transition-all duration-200"
@@ -172,9 +172,9 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                   onChange={(e) => setStatusFilter(e.target.value)}
                   className="px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#05294E] focus:border-[#05294E] transition-all duration-200"
                 >
-                  <option value="all">Todos os Status</option>
-                  <option value="active">Ativas</option>
-                  <option value="inactive">Inativas</option>
+                  <option value="all">All Status</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
                 </select>
                 
                 <button className="px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl hover:bg-slate-100 transition-colors flex items-center">
@@ -186,7 +186,7 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
             <div className="mt-4 flex items-center text-sm text-slate-600">
               <span className="font-medium">{filteredScholarships.length}</span>
               <span className="ml-1">
-                bolsa{filteredScholarships.length !== 1 ? 's' : ''} encontrada{filteredScholarships.length !== 1 ? 's' : ''}
+                scholarship{filteredScholarships.length !== 1 ? 's' : ''} found
               </span>
             </div>
           </div>
@@ -216,12 +216,12 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                             {scholarship.is_active ? (
                               <>
                                 <Zap className="h-3 w-3 mr-1" />
-                                Ativa
+                                Active
                               </>
                             ) : (
                               <>
                                 <Clock className="h-3 w-3 mr-1" />
-                                Inativa
+                                Inactive
                               </>
                             )}
                           </span>
@@ -229,7 +229,7 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                           {scholarship.is_exclusive && (
                             <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#D0151C]/10 text-[#D0151C]">
                               <Award className="h-3 w-3 mr-1" />
-                              Exclusiva
+                              Exclusive
                             </span>
                           )}
                         </div>
@@ -247,18 +247,18 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                           <div className="absolute right-0 top-10 w-48 bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50">
                             <button className="flex items-center w-full px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">
                               <Eye className="h-4 w-4 mr-3" />
-                              Ver Detalhes
+                              View Details
                             </button>
                             <button className="flex items-center w-full px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors">
                               <Edit className="h-4 w-4 mr-3" />
-                              Editar
+                              Edit
                             </button>
                             <button
                               onClick={() => toggleScholarshipStatus(scholarship.id, scholarship.is_active)}
                               className="flex items-center w-full px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
                             >
                               <CheckCircle className="h-4 w-4 mr-3" />
-                              {scholarship.is_active ? 'Desativar' : 'Ativar'}
+                              {scholarship.is_active ? 'Deactivate' : 'Activate'}
                             </button>
                             <div className="border-t border-slate-200 my-2"></div>
                             <button
@@ -266,7 +266,7 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                               className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition-colors"
                             >
                               <Trash2 className="h-4 w-4 mr-3" />
-                              Excluir
+                              Delete
                             </button>
                           </div>
                         )}
@@ -276,13 +276,13 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                     {/* Amount */}
                     <div className="flex items-center justify-between mb-4">
                       <div>
-                        <p className="text-sm font-medium text-slate-500 mb-1">Valor da Bolsa</p>
+                        <p className="text-sm font-medium text-slate-500 mb-1">Scholarship Amount</p>
                         <p className="text-2xl font-bold text-green-600">
                           {formatCurrency(Number(scholarship.amount))}
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm font-medium text-slate-500 mb-1">Nível</p>
+                        <p className="text-sm font-medium text-slate-500 mb-1">Level</p>
                         <p className="text-sm font-bold text-slate-900 capitalize">
                           {scholarship.level}
                         </p>
@@ -293,9 +293,9 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                     <div className={`p-3 rounded-xl border ${deadlineInfo.bg} ${deadlineInfo.border}`}>
                       <div className="flex items-center justify-between">
                         <div>
-                          <p className="text-sm font-medium text-slate-700">Prazo de Inscrição</p>
+                          <p className="text-sm font-medium text-slate-700">Application Deadline</p>
                           <p className="font-bold text-slate-900">
-                            {new Date(scholarship.deadline).toLocaleDateString('pt-BR')}
+                            {new Date(scholarship.deadline).toLocaleDateString()}
                           </p>
                         </div>
                         <div className="text-right">
@@ -305,13 +305,13 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                                 {daysLeft}
                               </p>
                               <p className={`text-xs font-medium ${deadlineInfo.color}`}>
-                                dia{daysLeft !== 1 ? 's' : ''} restante{daysLeft !== 1 ? 's' : ''}
+                                day{daysLeft !== 1 ? 's' : ''} left
                               </p>
                             </>
                           ) : (
                             <div className="flex items-center">
                               <AlertTriangle className="h-5 w-5 text-red-600 mr-1" />
-                              <span className="text-sm font-bold text-red-600">Expirado</span>
+                              <span className="text-sm font-bold text-red-600">Expired</span>
                             </div>
                           )}
                         </div>
@@ -325,12 +325,12 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                       <div className="bg-slate-50 p-3 rounded-xl text-center">
                         <Users className="h-5 w-5 mx-auto mb-2 text-slate-500" />
                         <p className="text-lg font-bold text-slate-900">0</p>
-                        <p className="text-xs text-slate-500">Candidatos</p>
+                        <p className="text-xs text-slate-500">Applicants</p>
                       </div>
                       <div className="bg-slate-50 p-3 rounded-xl text-center">
                         <Eye className="h-5 w-5 mx-auto mb-2 text-slate-500" />
                         <p className="text-lg font-bold text-slate-900">0</p>
-                        <p className="text-xs text-slate-500">Visualizações</p>
+                        <p className="text-xs text-slate-500">Views</p>
                       </div>
                     </div>
                   </div>
@@ -339,7 +339,7 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
                   <div className="px-6 pb-6">
                     <div className="flex space-x-2">
                       <button className="flex-1 bg-slate-100 text-slate-700 py-2.5 px-4 rounded-xl hover:bg-slate-200 transition-colors font-medium text-sm">
-                        Ver Candidatos
+                        View Applicants
                       </button>
                       <button className="bg-[#05294E] text-white py-2.5 px-4 rounded-xl hover:bg-[#05294E]/90 transition-colors">
                         <Edit className="h-4 w-4" />
@@ -354,9 +354,9 @@ const ScholarshipManagement: React.FC<ScholarshipManagementProps> = ({
           {filteredScholarships.length === 0 && searchTerm && (
             <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-12 text-center">
               <Search className="h-12 w-12 text-slate-400 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Nenhuma bolsa encontrada</h3>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">No scholarships found</h3>
               <p className="text-slate-500">
-                Não encontramos bolsas que correspondam ao termo "{searchTerm}"
+                We couldn't find any scholarships matching "{searchTerm}"
               </p>
             </div>
           )}

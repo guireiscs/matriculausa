@@ -63,18 +63,18 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
       <div className="min-h-screen bg-slate-50 flex items-center justify-center">
         <div className="flex flex-col items-center space-y-4">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[#05294E]"></div>
-          <p className="text-slate-600 font-medium">Carregando painel...</p>
+          <p className="text-slate-600 font-medium">Loading dashboard...</p>
         </div>
       </div>
     );
   }
 
   const sidebarItems = [
-    { id: 'overview', label: 'Visão Geral', icon: Home, path: '/school/dashboard', badge: null },
-    { id: 'scholarships', label: 'Bolsas de Estudo', icon: Award, path: '/school/dashboard/scholarships', badge: university?.profile_completed ? null : 'Configurar' },
-    { id: 'students', label: 'Estudantes', icon: Users, path: '/school/dashboard/students', badge: 'Em Breve' },
-    { id: 'analytics', label: 'Relatórios', icon: BarChart3, path: '/school/dashboard/analytics', badge: 'Em Breve' },
-    { id: 'profile', label: 'Perfil da Universidade', icon: Building, path: '/school/dashboard/profile', badge: null }
+    { id: 'overview', label: 'Overview', icon: Home, path: '/school/dashboard', badge: null },
+    { id: 'scholarships', label: 'Scholarships', icon: Award, path: '/school/dashboard/scholarships', badge: university?.profile_completed ? null : 'Setup' },
+    { id: 'students', label: 'Students', icon: Users, path: '/school/dashboard/students', badge: 'Coming Soon' },
+    { id: 'analytics', label: 'Analytics', icon: BarChart3, path: '/school/dashboard/analytics', badge: 'Coming Soon' },
+    { id: 'profile', label: 'University Profile', icon: Building, path: '/school/dashboard/profile', badge: null }
   ];
 
   return (
@@ -92,7 +92,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
               </div>
               <div>
                 <h1 className="text-lg font-black text-slate-900">Matrícula USA</h1>
-                <p className="text-xs text-slate-500 font-medium">Dashboard Universidade</p>
+                <p className="text-xs text-slate-500 font-medium">University Dashboard</p>
               </div>
             </Link>
             <button
@@ -125,12 +125,12 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                   {university.is_approved ? (
                     <>
                       <CheckCircle className="h-3 w-3 mr-1" />
-                      Aprovado
+                      Approved
                     </>
                   ) : (
                     <>
                       <Clock className="h-3 w-3 mr-1" />
-                      Pendente
+                      Pending
                     </>
                   )}
                 </span>
@@ -138,7 +138,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                 {!university.profile_completed && (
                   <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">
                     <AlertCircle className="h-3 w-3 mr-1" />
-                    Perfil Incompleto
+                    Profile Incomplete
                   </span>
                 )}
               </div>
@@ -150,7 +150,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
             {sidebarItems.map((item) => {
               const Icon = item.icon;
               const isActive = activeTab === item.id;
-              const isDisabled = item.badge === 'Em Breve';
+              const isDisabled = item.badge === 'Coming Soon';
               
               return (
                 <Link
@@ -171,7 +171,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                   </div>
                   {item.badge && (
                     <span className={`px-2 py-1 text-xs font-medium rounded-lg ${
-                      item.badge === 'Em Breve' 
+                      item.badge === 'Coming Soon' 
                         ? 'bg-slate-100 text-slate-500'
                         : 'bg-orange-100 text-orange-700'
                     }`}>
@@ -191,7 +191,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                 className="w-full bg-gradient-to-r from-[#D0151C] to-red-600 text-white py-3 px-4 rounded-xl hover:from-[#B01218] hover:to-red-700 transition-all duration-300 font-bold text-sm flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 <Plus className="h-4 w-4 mr-2" />
-                Nova Bolsa
+                New Scholarship
               </Link>
             ) : (
               <Link
@@ -199,7 +199,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                 className="w-full bg-gradient-to-r from-[#05294E] to-blue-700 text-white py-3 px-4 rounded-xl hover:from-[#05294E]/90 hover:to-blue-600 transition-all duration-300 font-bold text-sm flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105"
               >
                 <Settings className="h-4 w-4 mr-2" />
-                Completar Perfil
+                Complete Profile
               </Link>
             )}
           </div>
@@ -212,8 +212,8 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                   <Shield className="h-4 w-4 text-blue-600" />
                 </div>
                 <div>
-                  <h4 className="font-semibold text-slate-900 text-sm">Suporte 24/7</h4>
-                  <p className="text-xs text-slate-500">Estamos aqui para ajudar</p>
+                  <h4 className="font-semibold text-slate-900 text-sm">24/7 Support</h4>
+                  <p className="text-xs text-slate-500">We're here to help</p>
                 </div>
               </div>
             </div>
@@ -244,18 +244,18 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
               
               <div className="hidden md:block">
                 <h1 className="text-2xl font-bold text-slate-900">
-                  {activeTab === 'overview' && 'Visão Geral'}
-                  {activeTab === 'scholarships' && 'Gerenciar Bolsas'}
-                  {activeTab === 'profile' && 'Perfil da Universidade'}
-                  {activeTab === 'students' && 'Estudantes'}
-                  {activeTab === 'analytics' && 'Relatórios e Analytics'}
+                  {activeTab === 'overview' && 'Overview'}
+                  {activeTab === 'scholarships' && 'Manage Scholarships'}
+                  {activeTab === 'profile' && 'University Profile'}
+                  {activeTab === 'students' && 'Students'}
+                  {activeTab === 'analytics' && 'Analytics & Reports'}
                 </h1>
                 <p className="text-slate-600">
-                  {activeTab === 'overview' && 'Acompanhe o desempenho da sua universidade'}
-                  {activeTab === 'scholarships' && 'Crie e gerencie suas oportunidades de bolsa'}
-                  {activeTab === 'profile' && 'Mantenha as informações da universidade atualizadas'}
-                  {activeTab === 'students' && 'Gerencie candidatos e estudantes'}
-                  {activeTab === 'analytics' && 'Análise detalhada de performance e métricas'}
+                  {activeTab === 'overview' && 'Monitor your university performance'}
+                  {activeTab === 'scholarships' && 'Create and manage scholarship opportunities'}
+                  {activeTab === 'profile' && 'Keep your university information up to date'}
+                  {activeTab === 'students' && 'Manage applicants and students'}
+                  {activeTab === 'analytics' && 'Detailed performance analysis and metrics'}
                 </p>
               </div>
             </div>
@@ -267,7 +267,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                   <Search className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
                   <input
                     type="text"
-                    placeholder="Buscar..."
+                    placeholder="Search..."
                     className="w-80 pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#05294E] focus:border-[#05294E] transition-all duration-200"
                   />
                 </div>
@@ -290,7 +290,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                   </div>
                   <div className="hidden md:block text-left">
                     <p className="font-semibold text-slate-900 text-sm">{user?.name}</p>
-                    <p className="text-xs text-slate-500">Administrador</p>
+                    <p className="text-xs text-slate-500">Administrator</p>
                   </div>
                   <ChevronDown className="h-4 w-4 text-slate-400" />
                 </button>
@@ -308,7 +308,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                       onClick={() => setUserMenuOpen(false)}
                     >
                       <Edit className="h-4 w-4 mr-3 text-slate-400" />
-                      Editar Perfil
+                      Edit Profile
                     </Link>
                     
                     <Link
@@ -317,7 +317,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                       onClick={() => setUserMenuOpen(false)}
                     >
                       <Settings className="h-4 w-4 mr-3 text-slate-400" />
-                      Configurações
+                      Settings
                     </Link>
                     
                     <div className="border-t border-slate-200 my-2"></div>
@@ -327,7 +327,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                       className="flex items-center w-full px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors"
                     >
                       <LogOut className="h-4 w-4 mr-3" />
-                      Sair
+                      Sign Out
                     </button>
                   </div>
                 )}
@@ -349,12 +349,12 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                   </div>
                   <div>
                     <h2 className="text-3xl font-bold mb-2">
-                      {!university ? 'Bem-vindo à Matrícula USA!' : 'Complete Seu Perfil'}
+                      {!university ? 'Welcome to Matrícula USA!' : 'Complete Your Profile'}
                     </h2>
                     <p className="text-blue-100 text-lg">
                       {!university 
-                        ? 'Configure sua universidade e comece a atrair estudantes internacionais'
-                        : 'Finalize seu perfil para liberar todas as funcionalidades'
+                        ? 'Set up your university and start attracting international students'
+                        : 'Finish your profile to unlock all features'
                       }
                     </p>
                   </div>
@@ -363,18 +363,18 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                   <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
                     <Edit className="h-8 w-8 text-white mb-4" />
-                    <h3 className="font-bold text-white mb-2">1. Completar Perfil</h3>
-                    <p className="text-blue-100 text-sm">Adicione informações da universidade e documentação</p>
+                    <h3 className="font-bold text-white mb-2">1. Complete Profile</h3>
+                    <p className="text-blue-100 text-sm">Add university information and documentation</p>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
                     <Award className="h-8 w-8 text-yellow-400 mb-4" />
-                    <h3 className="font-bold text-white mb-2">2. Criar Bolsas</h3>
-                    <p className="text-blue-100 text-sm">Ofereça oportunidades exclusivas para estudantes</p>
+                    <h3 className="font-bold text-white mb-2">2. Create Scholarships</h3>
+                    <p className="text-blue-100 text-sm">Offer exclusive opportunities to students</p>
                   </div>
                   <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl border border-white/20">
                     <Users className="h-8 w-8 text-green-400 mb-4" />
-                    <h3 className="font-bold text-white mb-2">3. Conectar Estudantes</h3>
-                    <p className="text-blue-100 text-sm">Receba candidaturas de estudantes qualificados</p>
+                    <h3 className="font-bold text-white mb-2">3. Connect Students</h3>
+                    <p className="text-blue-100 text-sm">Receive applications from qualified students</p>
                   </div>
                 </div>
                 
@@ -384,7 +384,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                     className="bg-white text-[#05294E] px-8 py-3 rounded-xl hover:bg-slate-100 transition-all duration-300 font-bold text-center flex items-center justify-center shadow-lg hover:shadow-xl transform hover:scale-105"
                   >
                     <Settings className="h-5 w-5 mr-2" />
-                    {!university ? 'Configurar Perfil da Universidade' : 'Completar Perfil'}
+                    {!university ? 'Set Up University Profile' : 'Complete Profile'}
                   </Link>
                   {!university && (
                     <Link
@@ -392,7 +392,7 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
                       className="bg-white/20 backdrop-blur-sm border border-white/30 text-white px-8 py-3 rounded-xl hover:bg-white/30 transition-all duration-300 font-bold text-center flex items-center justify-center"
                     >
                       <Shield className="h-5 w-5 mr-2" />
-                      Revisar Termos e Condições
+                      Review Terms & Conditions
                     </Link>
                   )}
                 </div>
