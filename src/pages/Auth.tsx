@@ -695,10 +695,4 @@ const Auth: React.FC<AuthProps> = ({ mode }) => {
   );
 };
 
-export default Auth;
-
-export default Auth
-
-export default Auth
-
 export default Auth
