@@ -231,16 +231,113 @@ const SchoolDashboardLayout: React.FC<SchoolDashboardLayoutProps> = ({
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0">
-        {/* Main Content Area */}
-        <main className="flex-1 p-6 relative">
-          {/* Mobile Menu Button - Only visible on mobile */}
-          <button
-            onClick={() => setSidebarOpen(true)}
-            className="lg:hidden fixed top-4 left-4 z-50 p-3 bg-white rounded-xl shadow-lg border border-slate-200 text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition-all duration-200"
-          >
-            <Menu className="h-5 w-5" />
-          </button>
+        {/* Top Header */}
+        <header className="bg-white shadow-sm border-b border-slate-200">
+          <div className="flex items-center justify-between px-6 py-4">
+            <div className="flex items-center space-x-4">
+              <button
+                onClick={() => setSidebarOpen(true)}
+                className="lg:hidden p-2 rounded-lg text-slate-400 hover:text-slate-600 hover:bg-slate-100"
+              >
+                <Menu className="h-5 w-5" />
+              </button>
+              
+              <div className="hidden md:block">
+                <h1 className="text-2xl font-bold text-slate-900">
+                  {activeTab === 'overview' && 'Overview'}
+                  {activeTab === 'scholarships' && 'Manage Scholarships'}
+                  {activeTab === 'profile' && 'University Profile'}
+                  {activeTab === 'students' && 'Students'}
+                  {activeTab === 'analytics' && 'Analytics & Reports'}
+                </h1>
+                <p className="text-slate-600">
+                  {activeTab === 'overview' && 'Monitor your university performance'}
+                  {activeTab === 'scholarships' && 'Create and manage scholarship opportunities'}
+                  {activeTab === 'profile' && 'Keep your university information up to date'}
+                  {activeTab === 'students' && 'Manage applicants and students'}
+                  {activeTab === 'analytics' && 'Detailed performance analysis and metrics'}
+                </p>
+              </div>
+            </div>
 
+            <div className="flex items-center space-x-4">
+              {/* Search */}
+              <div className="hidden lg:block">
+                <div className="relative">
+                  <Search className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className="w-80 pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#05294E] focus:border-[#05294E] transition-all duration-200"
+                  />
+                </div>
+              </div>
+
+              {/* Notifications */}
+              <button className="relative p-2.5 text-slate-400 hover:text-slate-600 hover:bg-slate-100 rounded-xl transition-colors">
+                <Bell className="h-5 w-5" />
+                <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+              </button>
+
+              {/* User Menu */}
+              <div className="relative">
+                <button
+                  onClick={() => setUserMenuOpen(!userMenuOpen)}
+                  className="flex items-center space-x-3 p-2 rounded-xl hover:bg-slate-100 transition-colors"
+                >
+                  <div className="w-8 h-8 bg-gradient-to-br from-[#05294E] to-blue-700 rounded-lg flex items-center justify-center">
+                    <User className="h-4 w-4 text-white" />
+                  </div>
+                  <div className="hidden md:block text-left">
+                    <p className="font-semibold text-slate-900 text-sm">{user?.name}</p>
+                    <p className="text-xs text-slate-500">Administrator</p>
+                  </div>
+                  <ChevronDown className="h-4 w-4 text-slate-400" />
+                </button>
+
+                {userMenuOpen && (
+                  <div className="absolute right-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50">
+                    <div className="px-4 py-3 border-b border-slate-200">
+                      <p className="font-semibold text-slate-900">{user?.name}</p>
+                      <p className="text-sm text-slate-500">{user?.email}</p>
+                    </div>
+                    
+                    <Link
+                      to="/school/dashboard/profile"
+                      className="flex items-center px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                      onClick={() => setUserMenuOpen(false)}
+                    >
+                      <Edit className="h-4 w-4 mr-3 text-slate-400" />
+                      Edit Profile
+                    </Link>
+                    
+                    <Link
+                      to="/settings"
+                      className="flex items-center px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 transition-colors"
+                      onClick={() => setUserMenuOpen(false)}
+                    >
+                      <Settings className="h-4 w-4 mr-3 text-slate-400" />
+                      Settings
+                    </Link>
+                    
+                    <div className="border-t border-slate-200 my-2"></div>
+                    
+                    <button
+                      onClick={handleLogout}
+                      className="flex items-center w-full px-4 py-3 text-sm text-red-600 hover:bg-red-50 transition-colors"
+                    >
+                      <LogOut className="h-4 w-4 mr-3" />
+                      Sign Out
+                    </button>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* Main Content Area */}
+        <main className="flex-1 p-6">
           {/* Welcome Message for Incomplete Profiles */}
           {(!university || !university.profile_completed) && (
             <div className="bg-gradient-to-r from-[#05294E] to-blue-700 rounded-2xl p-8 mb-8 text-white relative overflow-hidden">
