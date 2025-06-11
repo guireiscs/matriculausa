@@ -80,21 +80,7 @@ const Auth: React.FC<AuthProps> = ({ mode }) => {
         }, 100);
       }
     } catch (err: any) {
-      let errorMessage = 'Authentication failed. Please try again.';
-      
-      if (err.message) {
-        errorMessage = err.message;
-      } else if (err.body) {
-        try {
-          const parsedBody = typeof err.body === 'string' ? JSON.parse(err.body) : err.body;
-          if (parsedBody.message) {
-            errorMessage = parsedBody.message;
-          }
-        } catch (parseError) {
-          // If parsing fails, keep the default message
-        }
-      }
-      setError(errorMessage);
+      setError(err.message || 'Authentication failed. Please try again.');
     } finally {
       setLoading(false);
     }
@@ -656,4 +642,59 @@ const Auth: React.FC<AuthProps> = ({ mode }) => {
                       Scholarship program management
                     </div>
                     <div className="flex items-center">
-                      <div className="w-2 h
+                      <div className="w-2 h-2 bg-[#D0151C] rounded-full mr-3"></div>
+                      Analytics and reporting tools
+                    </div>
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* Submit Button */}
+            <button
+              type="submit"
+              disabled={loading}
+              className={`w-full flex justify-center py-4 px-4 border border-transparent text-lg font-black rounded-2xl text-white transition-all duration-300 transform hover:scale-105 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed ${
+                activeTab === 'student' 
+                  ? 'bg-[#05294E] hover:bg-[#05294E]/90 focus:ring-[#05294E]' 
+                  : 'bg-[#D0151C] hover:bg-[#B01218] focus:ring-[#D0151C]'
+              }`}
+            >
+              {loading ? (
+                <div className="flex items-center">
+                  <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                  Creating Account...
+                </div>
+              ) : (
+                <div className="flex items-center">
+                  Create {activeTab === 'student' ? 'Student' : 'University'} Account
+                  <Zap className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              )}
+            </button>
+
+            {/* Trust Indicators */}
+            <div className="flex justify-center items-center space-x-6 pt-6 border-t border-slate-200">
+              <div className="flex items-center text-xs text-slate-500">
+                <Shield className="h-4 w-4 mr-1 text-green-500" />
+                <span>Secure</span>
+              </div>
+              <div className="flex items-center text-xs text-slate-500">
+                <Award className="h-4 w-4 mr-1 text-yellow-500" />
+                <span>Trusted</span>
+              </div>
+              <div className="flex items-center text-xs text-slate-500">
+                <Zap className="h-4 w-4 mr-1 text-[#D0151C]" />
+                <span>Fast Setup</span>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Auth;
+
+export default Auth
