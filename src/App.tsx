@@ -13,7 +13,7 @@ import TermsAndConditions from './pages/TermsAndConditions';
 import SchoolProfileSetup from './pages/SchoolProfileSetup';
 import SchoolDashboard from './pages/SchoolDashboard';
 import StudentDashboard from './pages/StudentDashboard';
-import AdminDashboard from './pages/AdminDashboard';
+import AdminDashboard from './pages/AdminDashboard/index';
 
 function App() {
   return (
