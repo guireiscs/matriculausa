@@ -323,22 +323,9 @@ const AdminDashboard: React.FC = () => {
     }
   };
 
-  // Check if user is admin
-  if (!user || user.role !== 'admin') {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="text-center">
-          <div className="h-16 w-16 text-red-500 mx-auto mb-4">⚠️</div>
-          <h1 className="text-2xl font-bold text-gray-900 mb-2">Access Denied</h1>
-          <p className="text-gray-600">You need administrator privileges to access this page.</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
-    <AdminDashboardLayout user={user} loading={loading}>
-      <Routes>
+    <Routes>
+      <Route path="/" element={<AdminDashboardLayout user={user} loading={loading} />}>
         <Route 
           index 
           element={
@@ -385,8 +372,8 @@ const AdminDashboard: React.FC = () => {
           path="settings" 
           element={<SystemSettings />} 
         />
-      </Routes>
-    </AdminDashboardLayout>
+      </Route>
+    </Routes>
   );
 };
 
